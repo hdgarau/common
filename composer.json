@@ -2,7 +2,6 @@
   "name": "hdgarau/common",
   "description": "Common Functions",
   "minimum-stability": "stable",
-  "license": "HD Modules",
   "authors": [
     {
       "name": "Hernan Garau",
