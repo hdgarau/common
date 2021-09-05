@@ -4,6 +4,7 @@
 namespace Common\Classes;
 
 use Common\Exceptions\ParsedGroupConfigException;
+use Common\Exceptions\StringParsedException;
 use PHPUnit\Runner\Extension\PharLoader;
 
 abstract class ParsedGroup
@@ -14,25 +15,40 @@ abstract class ParsedGroup
     protected $_level = 0;
     protected $_entities = [];
 
-
+    public function ParseRegularEntities(string $string)
+    {
+        while ( !empty ( $string ) )
+        {
+            $start = strpos($string, $this->_openSymbol);
+            $end = strpos($string, $this->_closeSymbol, $start + strlen($this->_openSymbol));
+            if($start === false)
+            {
+                $this->addEntity(new ParsedEntity($string));
+                return $this;
+            }
+            if($end === false)
+            {
+                throw new StringParsedException();
+            }
+            $this->addEntity(new ParsedEntity( substr($string,0,$start)));
+            $ini = $start + strlen ( $this->_openSymbol );
+            $string_aux = substr ( $string, $ini, $end - $ini );
+            $string = substr($string, $end +  strlen($this->_closeSymbol));
+            $object = new ParsedGroupCustom ( $this->_openSymbol, $this->_closeSymbol, $this->_recursive, 1 );
+            $object->addEntity(new ParsedEntity( $string_aux));
+            $this->addEntity ( $object );
+        }
+        return $this;
+    }
     public function nextEntityGroup(string $string, int &$nextLevel = 0 ) : string
     {
-        $cut_start = strpos($string, $this->_openSymbol);
-        if($this->_openSymbol == $this->_closeSymbol)
+        $cut_start = strpos ( $string, $this->_openSymbol );
+        if ( $this->_openSymbol == $this->_closeSymbol )
         {
-            if($this->_recursive)
-            {
-                throw new ParsedGroupConfigException(ParsedGroupConfigException::ERROR_RECURSIVE_AND_EQUAL_SIGN);
-            }
-            else
-            {
-                $cut_end = strpos($string, $this->_closeSymbol, $cut_start);
-            }
+            throw new ParsedGroupConfigException(ParsedGroupConfigException::ERROR_RECURSIVE_AND_EQUAL_SIGN);
         }
-        else
-        {
-            $cut_end = strpos($string, $this->_closeSymbol);
-        }
+        $cut_end = strpos($string, $this->_closeSymbol);
+
         if ($nextLevel == 0 )
         {
             if($cut_start === false ) // end
@@ -75,7 +91,6 @@ abstract class ParsedGroup
                 return substr($string, 0, $cut_end);
             }
         }
-
     }
 
     public function addEntity( $entity)
@@ -86,6 +101,10 @@ abstract class ParsedGroup
     public function parse ( string &$string ) : ParsedGroup
     {
         ///to see - bad function
+        if(!$this->_recursive)
+        {
+            return $this->ParseRegularEntities ( $string );
+        }
         do
         {
             $level = $this->_level;
