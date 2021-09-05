@@ -37,7 +37,15 @@ abstract class ParsedGroup
         {
             if($cut_start === false ) // end
             {
-                return $string;
+                if($cut_end === false )
+                {
+                    return $string;
+                }
+                else
+                {
+                    throw new \Common\Exceptions\StringParsedException;
+                }
+
             }
             $nextLevel++;
             return substr($string,0,$cut_start);
@@ -48,7 +56,7 @@ abstract class ParsedGroup
             {
                 throw new \Common\Exceptions\StringParsedException;
             }
-            if($cut_start !== false )
+            if($cut_start !== false ) //there are others entities
             {
                 if($cut_start > $cut_end || ! $this->_recursive) //First cut (has a brother)
                 {
@@ -58,10 +66,10 @@ abstract class ParsedGroup
                 else
                 {
                     $nextLevel++;
-                    return substr($string, 0, $cut_end);
+                    return substr($string, 0, $cut_start);
                 }
             }
-            else //Not ope anymore
+            else //Not open anymore
             {
                 $nextLevel--;
                 return substr($string, 0, $cut_end);
