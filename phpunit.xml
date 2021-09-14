@@ -3,11 +3,17 @@
         <testsuite name="parse">
             <directory>Test/StringParse</directory>
         </testsuite>
+        <testsuite name="date">
+            <directory>Test/Date</directory>
+        </testsuite>
         <testsuite name="parse_parenthesis">
             <file>Test/StringParse/StringParseParenthesisTest.php</file>
         </testsuite>
         <testsuite name="parse_token">
             <file>Test/StringParse/StringParseTokenTest.php</file>
+        </testsuite>
+        <testsuite name="date_period">
+            <file>Test/Date/PeriodTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>
