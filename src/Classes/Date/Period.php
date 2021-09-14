@@ -13,13 +13,13 @@
         const FIRST_DAY_YEAR    = 'YF';
         const LAST_DAY_YEAR     = 'YL';
 
-        static private $_date;
+        static private $_date = null;
 
         private static function _get( $period_code, $date = null, $param = 1)
         {
             if($date === null)
             {
-                $date = self::getDefault();
+                $date = clone self::getDefault();
             }
             if(is_string($date))
             {
