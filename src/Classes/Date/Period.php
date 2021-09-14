@@ -15,7 +15,7 @@
 
         static private $_date;
 
-        private static function _get( $period_code, \DateTime $date = null, $param = 1)
+        private static function _get( $period_code, $date = null, $param = 1)
         {
             if($date === null)
             {
