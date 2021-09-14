@@ -2,8 +2,8 @@
 namespace Test\StringParse;
 
 use Common\Classes\ParsedEntity;
-use Common\Classes\ParsedGroupByToken;
-use Common\Classes\ParsedGroupCustom;
+use Common\Classes\Parse\ParsedGroupByToken;
+use Common\Classes\Parse\ParsedGroupCustom;
 use PHPUnit\Framework\TestCase;
 
 class StringParseTokenTest extends TestCase

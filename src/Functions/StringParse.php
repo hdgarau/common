@@ -1,9 +1,9 @@
 <?php
 namespace Common\Functions;
 
-use Common\Classes\ParsedGroup;
-use Common\Classes\ParsedGroupByToken;
-use Common\Classes\ParsedGroupParenthesis;
+use Common\Classes\Parse\ParsedGroup;
+use Common\Classes\Parse\ParsedGroupByToken;
+use Common\Classes\Parse\ParsedGroupParenthesis;
 
 abstract class StringParse
 {

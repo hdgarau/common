@@ -4,8 +4,6 @@
 namespace Common\Exceptions;
 
 
-use Throwable;
-
 class ParsedGroupConfigException extends NumberErrorException
 {
     const ERROR_RECURSIVE_AND_EQUAL_SIGN = 0;

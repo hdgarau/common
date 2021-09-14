@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Common\Classes;
+namespace Common\Classes\Parse;
 
 use Common\Exceptions\ParsedGroupConfigException;
 use Common\Exceptions\StringParsedException;
