@@ -1,7 +1,7 @@
 <?php
 namespace Test\StringParse;
 
-use Common\Classes\ParsedEntity;
+use Common\Classes\Parse\ParsedEntity;
 use Common\Classes\Parse\ParsedGroupByToken;
 use Common\Classes\Parse\ParsedGroupCustom;
 use PHPUnit\Framework\TestCase;
