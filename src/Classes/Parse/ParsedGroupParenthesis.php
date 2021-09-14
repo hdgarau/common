@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Common\Classes;
+namespace Common\Classes\Parse;
 
 
 class ParsedGroupParenthesis extends ParsedGroup

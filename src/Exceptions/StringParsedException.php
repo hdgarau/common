@@ -4,8 +4,6 @@
 namespace Common\Exceptions;
 
 
-use Throwable;
-
 class StringParsedException extends \Exception
 {
     public function __construct( )

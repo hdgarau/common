@@ -4,8 +4,6 @@
 namespace Common\Exceptions;
 
 
-use Throwable;
-
 class NumberErrorException extends \Exception
 {
     protected $_errors = [ ];
