@@ -18,5 +18,6 @@ class PeriodTest extends TestCase
         //self::assertEquals('1985-01-01',Period::yearFirstDay()->format('Y-m-d'));
         self::assertEquals('1985-02-28',Period::monthLastDay()->format('Y-m-d'));
         self::assertEquals('1985-02-10',Period::getByCode('D 5')->format('Y-m-d'));
+        self::assertEquals(date("Y-m-d"),Period::getByCode('D 0', date("Y-m-d"))->format('Y-m-d'));
     }
 }
