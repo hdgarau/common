@@ -107,7 +107,7 @@
             if(preg_match('/^([A-Z]+)\\s?(\\d*|[A-Z]+)$/i',$code, $matches))
             {
                 list($all, $period_code, $n) = $matches;
-                return self::_get($period_code, $date, !empty($n) ? ltrim($n) : 1);
+                return self::_get($period_code, $date,$n !== '' ? ltrim($n) : 1);
             }
             else
             {
