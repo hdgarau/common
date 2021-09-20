@@ -3,15 +3,6 @@
 
     abstract class Period
     {
-        const DAYS              = 'D';
-        const WEEKS             = 'W';
-        const MONTHS            = 'M';
-        const YEARS             = 'Y';
-        const WEEKDAY           = 'WD';
-        const FIRST_DAY_MONTH   = 'MF';
-        const LAST_DAY_MONTH    = 'ML';
-        const FIRST_DAY_YEAR    = 'YF';
-        const LAST_DAY_YEAR     = 'YL';
 
         static private $_date = null;
 
