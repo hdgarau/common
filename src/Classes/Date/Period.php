@@ -25,6 +25,10 @@
             {
                 $date = \DateTime::createFromFormat("Y-m-d", $date);
             }
+            if($param == 0)
+            {
+                return $date;
+            }
             switch ($period_code)
             {
                 case self::DAYS:
