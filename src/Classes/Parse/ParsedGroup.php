@@ -135,7 +135,7 @@ abstract class ParsedGroup
         $str .= $this->_level == 0 ? '' : $this->_closeSymbol;
         return $str;
     }
-    public function __serialize()
+    public function getEntities()
     {
         return $this->_entities;
     }
