@@ -7,7 +7,8 @@
         const WEEKS             = 'W';
         const MONTHS            = 'M';
         const YEARS             = 'Y';
-        const WEEKDAY           = 'DW';
+        const WEEKDAY_PREV      = 'DWP';
+        const WEEKDAY_NEXT      = 'DWN';
         const FIRST_DAY_MONTH   = 'BM';
         const LAST_DAY_MONTH    = 'EM';
         const FIRST_DAY_YEAR    = 'BY';
@@ -35,8 +36,10 @@
                 case self::MONTHS:
                 case self::WEEKS:
                 case self::YEARS:
-                    return $date->sub(new \DateInterval('P' . $param . $period_code));
-                case self::WEEKDAY:
+                    return $date->{$param > 0 ? 'add' : 'sub'}(new \DateInterval('P' . $param . $period_code));
+                case self::WEEKDAY_NEXT:
+                    return $date->modify('+8 day')->modify("last " . $param);
+                case self::WEEKDAY_PREV:
                     return $date->modify('+1 day')->modify("last " . $param);
                 case self::FIRST_DAY_MONTH:
                     return $date->modify('first day of this month');
@@ -80,11 +83,11 @@
         }
         static function weekBegin($date = null)
         {
-            return self::_get(self::WEEKDAY,$date,'Monday');
+            return self::_get(self::WEEKDAY_PREV,$date,'Monday');
         }
         static function weekDay($day,$date = null)
         {
-            return self::_get(self::WEEKDAY,$date,$day);
+            return self::_get(self::WEEKDAY_PREV,$date,$day);
         }
         static function monthFirstDay($date = null)
         {
