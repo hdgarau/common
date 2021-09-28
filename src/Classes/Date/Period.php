@@ -36,7 +36,7 @@
                 case self::MONTHS:
                 case self::WEEKS:
                 case self::YEARS:
-                    return $date->{$param > 0 ? 'add' : 'sub'}(new \DateInterval('P' . $param . $period_code));
+                    return $date->{$param > 0 ? 'add' : 'sub'}(new \DateInterval('P' . abs($param) . $period_code));
                 case self::WEEKDAY_NEXT:
                     return $date->modify('+8 day')->modify("last " . $param);
                 case self::WEEKDAY_PREV:
