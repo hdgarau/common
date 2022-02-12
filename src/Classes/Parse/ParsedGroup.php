@@ -5,7 +5,6 @@ namespace Common\Classes\Parse;
 
 use Common\Exceptions\ParsedGroupConfigException;
 use Common\Exceptions\StringParsedException;
-use PHPUnit\Runner\Extension\PharLoader;
 
 abstract class ParsedGroup
 {
@@ -59,7 +58,7 @@ abstract class ParsedGroup
                 }
                 else
                 {
-                    throw new \Common\Exceptions\StringParsedException;
+                    throw new StringParsedException;
                 }
 
             }
@@ -70,7 +69,7 @@ abstract class ParsedGroup
         {
             if($cut_end === false )
             {
-                throw new \Common\Exceptions\StringParsedException;
+                throw new StringParsedException;
             }
             if($cut_start !== false ) //there are others entities
             {

@@ -1,6 +1,9 @@
 <?php
     namespace Common\Classes\Date;
 
+    use DateInterval;
+    use DateTime;
+
     abstract class Period
     {
         const DAYS              = 'D';
@@ -24,7 +27,7 @@
             }
             if(is_string($date))
             {
-                $date = \DateTime::createFromFormat("Y-m-d", $date);
+                $date = DateTime::createFromFormat("Y-m-d", $date);
             }
             if($param == 0)
             {
@@ -36,7 +39,7 @@
                 case self::MONTHS:
                 case self::WEEKS:
                 case self::YEARS:
-                    return $date->{$param > 0 ? 'add' : 'sub'}(new \DateInterval('P' . abs($param) . $period_code));
+                    return $date->{$param > 0 ? 'add' : 'sub'}(new DateInterval('P' . abs($param) . $period_code));
                 case self::WEEKDAY_NEXT:
                     return $date->modify('+8 day')->modify("last " . $param);
                 case self::WEEKDAY_PREV:
@@ -55,9 +58,9 @@
         }
         static function setDefault($date = 'now')
         {
-            self::$_date = new \DateTime($date);
+            self::$_date = new DateTime($date);
         }
-        static function getDefault($date = 'now')
+        static function getDefault()
         {
             if(self::$_date === null)
             {
