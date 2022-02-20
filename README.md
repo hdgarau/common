@@ -16,7 +16,7 @@ Library with basics Classes.
 
 #### Description 
 
-Is a class with static methods. The one return a date (type \Datetime) from a date and period indicated.<br>
+Is a class with static methods. That one return a date (type \Datetime) from a date and period indicated.<br>
 Some options are:
 - days
 - weeks
@@ -34,11 +34,11 @@ Period::setDefault('1985-02-15');
 Period::getByCode('D 5')->format('Y-m-d'); //1985-02-20
 </code></pre>
 
-#### Parse
+### Parse
 
 #### Description
 
-Parse a string to object by a token in Entities. Each entity has a property level.
+Parse a string to object by a token then It generates Entity and EntityGroup objects. Each entityGroup object has a property level.
 that indicates if it is contained for the previous one or a child has finished.
 For example if we parse de parenthesis for "That is a test (just a simple (very) test) to do":
 - EntityGroup (level:0) - entities:
